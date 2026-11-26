@@ -1,0 +1,528 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What I Work With</title>
+<meta name="description" content="What I Work With">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #000;
+    --bg-soft: #0a0a0b;
+    --text: #f5f5f6;
+    --text-dim: #9a9aa0;
+    --text-faint: #6b6b72;
+    --line: rgba(255,255,255,.08);
+    --line-strong: rgba(255,255,255,.16);
+    --card-bg: linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.012));
+    --card-hover: linear-gradient(180deg, rgba(255,255,255,.065), rgba(255,255,255,.02));
+    --icon-bg: rgba(255,255,255,.04);
+    --title-grad: linear-gradient(180deg, #8d8d93 0%, #5f5f66 100%);
+    --glow: rgba(255,255,255,.06);
+    --grid: rgba(255,255,255,.035);
+    --dot: rgba(255,255,255,.75);
+  }
+  :root[data-theme="light"] {
+    --bg: #f6f6f7;
+    --bg-soft: #ffffff;
+    --text: #0b0b0c;
+    --text-dim: #55555c;
+    --text-faint: #8a8a91;
+    --line: rgba(0,0,0,.08);
+    --line-strong: rgba(0,0,0,.18);
+    --card-bg: linear-gradient(180deg, rgba(255,255,255,.95), rgba(255,255,255,.7));
+    --card-hover: #fff;
+    --icon-bg: rgba(0,0,0,.04);
+    --title-grad: linear-gradient(180deg, #8a8a91 0%, #b9b9bf 100%);
+    --glow: rgba(0,0,0,.05);
+    --grid: rgba(0,0,0,.04);
+    --dot: rgba(0,0,0,.55);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; overflow-x: hidden; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    transition: background .4s ease, color .4s ease;
+  }
+  a { color: inherit; text-decoration: none; }
+  svg { display: block; }
+
+  /* ---------- background decoration ---------- */
+  .bg-grid {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 64px 64px;
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 20%, transparent 75%);
+            mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 20%, transparent 75%);
+  }
+  .arc {
+    position: absolute; z-index: 0; pointer-events: none;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+  }
+  .arc.left  { width: 520px; height: 520px; left: -420px; top: -220px; }
+  .arc.right { width: 520px; height: 520px; right: -300px; top: 110px; }
+  .spark {
+    position: absolute; width: 3px; height: 3px; border-radius: 50%;
+    background: var(--dot); box-shadow: 0 0 10px 2px var(--glow);
+    animation: twinkle 3.6s ease-in-out infinite;
+  }
+  @keyframes twinkle { 0%,100% { opacity: .25 } 50% { opacity: 1 } }
+
+  .page { position: relative; z-index: 1; min-height: 100vh; display: flex; flex-direction: column; overflow-x: clip; }
+
+  /* ---------- nav ---------- */
+  header.nav {
+    position: sticky; top: 0; z-index: 20;
+    display: flex; justify-content: space-between; align-items: center;
+    height: 80px; padding: 0 clamp(20px, 4.5vw, 72px);
+    border-bottom: 1px solid var(--line);
+    background: color-mix(in srgb, var(--bg) 72%, transparent);
+    -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+  }
+  .brand { display: inline-flex; flex-direction: column; align-items: flex-start; gap: 5px; color: var(--text); }
+  .brand svg { width: 34px; height: auto; }
+  .brand small { font-size: 10.5px; font-weight: 400; letter-spacing: .08em; color: var(--text-dim); white-space: nowrap; }
+  .nav-links { display: flex; gap: clamp(18px, 3.4vw, 52px); height: 100%; }
+  .nav-links a {
+    position: relative; display: flex; align-items: center;
+    font-size: 15px; color: var(--text-dim); letter-spacing: .01em;
+    transition: color .25s ease;
+  }
+  .nav-links a:hover { color: var(--text); }
+  .nav-links a.active { color: var(--text); font-weight: 500; }
+  .nav-links a.active::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px;
+    background: var(--text); border-radius: 2px;
+    box-shadow: 0 0 14px rgba(255,255,255,.45);
+  }
+  .nav-right { display: flex; justify-content: flex-end; align-items: center; gap: 8px; }
+  .icon-btn {
+    width: 40px; height: 40px; display: grid; place-items: center;
+    border-radius: 50%; border: 1px solid transparent; background: transparent;
+    color: var(--text); cursor: pointer; transition: background .25s, border-color .25s;
+  }
+  .icon-btn:hover { background: var(--icon-bg); border-color: var(--line); }
+  .burger { display: none; }
+  .sun { display: none; }
+  :root[data-theme="light"] .sun { display: block; }
+  :root[data-theme="light"] .moon { display: none; }
+
+  /* ---------- hero ---------- */
+  main { flex: 1; width: 100%; max-width: 1400px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 80px); }
+  .hero { text-align: center; padding-top: clamp(56px, 10vh, 88px); }
+  .pill {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 9px 18px; border-radius: 999px;
+    border: 1px solid var(--line-strong); background: var(--icon-bg);
+    font-size: 12.5px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--text-dim);
+  }
+  .pill i { width: 7px; height: 7px; border-radius: 50%; background: var(--text); box-shadow: 0 0 10px var(--text); }
+  .tagline {
+    margin-top: 16px; font-size: clamp(11px, 1.5vw, 13px); font-weight: 400;
+    letter-spacing: .22em; text-transform: uppercase; color: var(--text-dim); text-wrap: balance; padding: 0 8px;
+  }
+  h1 {
+    margin-top: 0;
+    font-size: clamp(36px, 7.4vw, 82px); line-height: 1.05; font-weight: 700; letter-spacing: -.035em;
+  }
+  h1 .dim {
+    background: var(--title-grad);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .subtitle {
+    display: flex; align-items: center; justify-content: center; gap: 26px;
+    margin-top: 14px; color: var(--text-dim);
+    font-size: clamp(18px, 2.4vw, 28px); font-weight: 400; letter-spacing: .02em;
+  }
+  .subtitle::before, .subtitle::after {
+    content: ""; flex: 1; max-width: 330px; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--line-strong));
+  }
+  .subtitle::after { transform: scaleX(-1); }
+  .subtitle span { white-space: nowrap; }
+
+  /* ---------- cards ---------- */
+  .grid { margin-top: clamp(36px, 6vh, 56px); display: grid; gap: 30px 30px; grid-template-columns: repeat(6, 1fr); }
+  .card {
+    position: relative; display: flex; flex-direction: column; justify-content: flex-start;
+    min-height: 212px; padding: 26px 34px 28px 34px;
+    border: 1px solid var(--line-strong); border-radius: 26px;
+    background: var(--card-bg);
+    overflow: hidden; isolation: isolate;
+    transition: transform .35s cubic-bezier(.2,.7,.2,1), border-color .35s, background .35s, box-shadow .35s;
+  }
+  .card::before {
+    content: ""; position: absolute; inset: 0; z-index: -1; opacity: 0; transition: opacity .35s;
+    background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 0%), rgba(255,255,255,.09), transparent 60%);
+  }
+  :root[data-theme="light"] .card::before {
+    background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 0%), rgba(0,0,0,.05), transparent 60%);
+  }
+  .card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,.3); background: var(--card-hover); box-shadow: 0 18px 50px -20px rgba(0,0,0,.8); }
+  :root[data-theme="light"] .card:hover { border-color: rgba(0,0,0,.3); box-shadow: 0 18px 50px -24px rgba(0,0,0,.25); }
+  .card:hover::before { opacity: 1; }
+  .c1 { grid-column: span 2; } .c2 { grid-column: span 2; } .c3 { grid-column: span 2; }
+  .c4 { grid-column: span 3; } .c5 { grid-column: span 3; }
+
+  .card .ico {
+    flex: none; margin-bottom: 22px;
+    width: 68px; height: 68px; display: grid; place-items: center;
+    border-radius: 18px; border: 1px solid var(--line-strong); background: var(--icon-bg);
+    transition: transform .35s, background .35s;
+  }
+  .card:hover .ico { transform: scale(1.06); background: rgba(255,255,255,.08); }
+  :root[data-theme="light"] .card:hover .ico { background: rgba(0,0,0,.07); }
+  .card .ico svg { width: 32px; height: 32px; }
+  .card h3 { font-size: 24px; font-weight: 600; letter-spacing: -.015em; }
+  .card p { margin-top: 6px; max-width: 100%; font-size: 17px; line-height: 1.45; color: var(--text-dim); font-weight: 300; }
+
+  /* ---------- footer ---------- */
+  .foot { position: relative; margin-top: clamp(40px, 6vh, 60px); text-align: center; padding-bottom: 130px; }
+  .divider { display: flex; align-items: center; justify-content: center; gap: 24px; }
+  .divider::before, .divider::after {
+    content: ""; flex: 1; max-width: 520px; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--line-strong));
+  }
+  .divider::after { transform: scaleX(-1); }
+  .divider svg { width: 28px; height: 28px; color: var(--text); }
+  .motto {
+    margin-top: 28px; display: flex; justify-content: center; align-items: center; gap: 22px;
+    font-size: 13px; letter-spacing: .42em; text-transform: uppercase; color: var(--text-faint);
+  }
+  .motto b { font-weight: 400; opacity: .7; letter-spacing: 0; }
+
+
+  /* ---------- globe ---------- */
+  .globe { position: fixed; left: 0; bottom: 0; width: 100%; height: 300px; z-index: 0; pointer-events: none; display: block; }
+  @media (max-width: 760px) { .globe { height: 215px; } }
+
+  /* ---------- reveal ---------- */
+  .reveal { opacity: 0; transform: translateY(18px); animation: rise .8s cubic-bezier(.2,.7,.2,1) forwards; }
+  @keyframes rise { to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { .reveal { animation: none; opacity: 1; transform: none; } .spark { animation: none; } }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 1000px) {
+    .c1, .c2, .c3 { grid-column: span 3; }
+    .c3 { grid-column: span 6; }
+    .c4, .c5 { grid-column: span 3; }
+  }
+  @media (max-width: 760px) {
+    header.nav { height: 68px; }
+    .grid { gap: 18px; }
+    .c1, .c2, .c3, .c4, .c5 { grid-column: span 6; }
+    .card { min-height: 200px; padding: 24px 26px; }
+    .card .ico { width: 60px; height: 60px; margin-bottom: 18px; }
+    .subtitle { gap: 14px; }
+    .motto { gap: 12px; letter-spacing: .3em; font-size: 11px; }
+    .arc.right { right: -380px; }
+  }
+</style>
+</head>
+<body>
+<div class="bg-grid"></div>
+<canvas class="globe" id="globe" aria-hidden="true"></canvas>
+
+<div class="page">
+  <span class="arc left"></span>
+  <span class="arc right"></span>
+  <span class="spark" style="left:6%; top:150px"></span>
+  <span class="spark" style="right:9%; top:240px; animation-delay:1.2s"></span>
+
+  <header class="nav">
+    <a class="brand" href="#" aria-label="Muhammed Isayev">
+      <svg viewBox="0 0 44 30" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M2 28V3l12 14L26 3v25"/>
+        <path d="M37 3v25"/>
+      </svg>
+      <small>Muhammed Isayev</small>
+    </a>
+
+
+    <div class="nav-right">
+      <button class="icon-btn" id="themeBtn" aria-label="Toggle theme">
+        <svg class="moon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a6.8 6.8 0 0 0 10.7 10.7Z"/></svg>
+        <svg class="sun" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1 class="reveal" style="animation-delay:.08s">What I Work <span class="dim">With</span></h1>
+      <p class="tagline reveal" style="animation-delay:.16s">Exploring Web Security &amp; Offensive Security</p>
+    </section>
+
+    <section class="grid">
+      <!-- 1 -->
+      <div class="card c1 reveal" style="animation-delay:.22s">
+        <div class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19"/><path d="M12 2.5c2.6 2.7 4 6 4 9.5s-1.4 6.8-4 9.5c-2.6-2.7-4-6-4-9.5s1.4-6.8 4-9.5Z"/><path d="M4.2 7.2h15.6M4.2 16.8h15.6"/></svg>
+        </div>
+        <h3>Web Application Security</h3>
+        <p>OWASP Top 10, SQLi Bypass</p>
+      </div>
+
+      <!-- 2 -->
+      <div class="card c2 reveal" style="animation-delay:.3s">
+        <div class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5 4.5 5.4v6c0 4.6 3.1 8.2 7.5 10.1 4.4-1.9 7.5-5.5 7.5-10.1v-6L12 2.5Z"/><path d="m12.8 7.5-3 5h2.6l-.8 3.5 3-5h-2.6l.8-3.5Z" fill="currentColor" stroke="none" opacity=".85"/></svg>
+        </div>
+        <h3>Security Tools</h3>
+        <p>Burp Suite, Wireshark, Metasploit, SQLMap</p>
+      </div>
+
+      <!-- 3 -->
+      <div class="card c3 reveal" style="animation-delay:.38s">
+        <div class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 7 5 5-5 5"/><path d="M13 18h6"/></svg>
+        </div>
+        <h3>Systems &amp; Networking</h3>
+        <p>Linux &amp; Windows Commands, Computer Networking</p>
+      </div>
+
+      <!-- 4 -->
+      <div class="card c4 reveal" style="animation-delay:.46s; min-height:176px">
+        <div class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M14 4.5 10 19.5"/></svg>
+        </div>
+        <h3>Programming</h3>
+        <p>Python, JavaScript, SQL</p>
+      </div>
+
+      <!-- 5 -->
+      <div class="card c5 reveal" style="animation-delay:.54s; min-height:176px">
+        <div class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="5" width="15" height="11" rx="1.6"/><path d="M2.5 19h19"/></svg>
+        </div>
+        <h3>Hands-on Practice</h3>
+        <p>HackTheBox, PortSwigger Labs</p>
+      </div>
+    </section>
+
+    <footer class="foot reveal" style="animation-delay:.62s">
+      <div class="divider">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5 4.5 5.4v6c0 4.6 3.1 8.2 7.5 10.1 4.4-1.9 7.5-5.5 7.5-10.1v-6L12 2.5Z"/><rect x="9.3" y="10.8" width="5.4" height="4.4" rx=".9"/><path d="M10.5 10.8V9.4a1.5 1.5 0 0 1 3 0v1.4"/></svg>
+      </div>
+    </footer>
+  </main>
+</div>
+
+<script>
+  // theme
+  (function () {
+    var root = document.documentElement, btn = document.getElementById('themeBtn');
+    try { var s = localStorage.getItem('theme'); if (s) root.setAttribute('data-theme', s); } catch (e) {}
+    btn.addEventListener('click', function () {
+      var n = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', n);
+      try { localStorage.setItem('theme', n); } catch (e) {}
+    });
+  })();
+
+  // card spotlight
+  document.querySelectorAll('.card').forEach(function (c) {
+    c.addEventListener('pointermove', function (e) {
+      var r = c.getBoundingClientRect();
+      c.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      c.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    });
+  });
+
+
+  // ---------- globe with live "attack" arcs ----------
+  (function () {
+    var cv = document.getElementById('globe'), ctx = cv.getContext('2d');
+    var root = document.documentElement;
+    var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var W, H, R, cx, cy, dpr, small;
+    var TILT = -0.96, cT = Math.cos(TILT), sT = Math.sin(TILT);
+    var yaw = 0.6;
+
+    // tiny value-noise -> continent-like clusters of dots
+    function hash(x, y, z) { var n = Math.sin(x * 127.1 + y * 311.7 + z * 74.7) * 43758.5453; return n - Math.floor(n); }
+    function sm(t) { return t * t * (3 - 2 * t); }
+    function lerp(a, b, t) { return a + (b - a) * t; }
+    function noise(x, y, z) {
+      var xi = Math.floor(x), yi = Math.floor(y), zi = Math.floor(z);
+      var xf = sm(x - xi), yf = sm(y - yi), zf = sm(z - zi);
+      return lerp(
+        lerp(lerp(hash(xi, yi, zi), hash(xi + 1, yi, zi), xf), lerp(hash(xi, yi + 1, zi), hash(xi + 1, yi + 1, zi), xf), yf),
+        lerp(lerp(hash(xi, yi, zi + 1), hash(xi + 1, yi, zi + 1), xf), lerp(hash(xi, yi + 1, zi + 1), hash(xi + 1, yi + 1, zi + 1), xf), yf), zf);
+    }
+
+    var pts = [], hubs = [];
+    (function build() {
+      var N = 11000, golden = Math.PI * (3 - Math.sqrt(5)), i, y, r, th, x, z, v;
+      for (i = 0; i < N; i++) {
+        y = 1 - (i / (N - 1)) * 2; r = Math.sqrt(1 - y * y); th = golden * i;
+        x = Math.cos(th) * r; z = Math.sin(th) * r;
+        v = noise(x * 2.3 + 7, y * 2.3 + 3, z * 2.3) * 0.65 + noise(x * 5.1, y * 5.1 + 9, z * 5.1) * 0.35;
+        if (v > 0.43) pts.push([x, y, z, 0.35 + Math.random() * 0.65]);
+      }
+      var tries = 0;
+      while (hubs.length < 150 && tries++ < 5000) {
+        var p = pts[(Math.random() * pts.length) | 0], ok = true;
+        for (var k = 0; k < hubs.length; k++) {
+          var q = hubs[k]; if (p[0] * q[0] + p[1] * q[1] + p[2] * q[2] > 0.992) { ok = false; break; }
+        }
+        if (ok) hubs.push(p);
+      }
+    })();
+
+    function resize() {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      W = cv.clientWidth; H = cv.clientHeight; small = W < 760;
+      cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      R = small ? Math.max(W * 1.15, 430) : Math.max(W * 0.78, 760);
+      cx = W / 2; cy = (small ? 48 : 72) + R;   // only the top cap is visible
+    }
+
+    // projection (globe coords -> screen), results in sx, sy, sz
+    var sx, sy, sz;
+    function proj(x, y, z, rad) {
+      var c = Math.cos(yaw), s = Math.sin(yaw);
+      var x1 = x * c + z * s, z1 = -x * s + z * c;
+      var y2 = y * cT - z1 * sT, z2 = y * sT + z1 * cT;
+      sx = cx + R * rad * x1; sy = cy - R * rad * y2; sz = z2;
+    }
+
+    // attacks
+    var attacks = [], nextSpawn = 0;
+    function spawn(now) {
+      var vis = [], k, h;
+      for (k = 0; k < hubs.length; k++) {
+        h = hubs[k]; proj(h[0], h[1], h[2], 1);
+        if (sz > 0.12 && sx > 10 && sx < W - 10 && sy > 10 && sy < H - 10) vis.push(h);
+      }
+      if (vis.length < 2) return;
+      var a = vis[(Math.random() * vis.length) | 0], b, tries = 0, d;
+      do { b = vis[(Math.random() * vis.length) | 0]; d = a[0] * b[0] + a[1] * b[1] + a[2] * b[2]; } while ((a === b || d > 0.985) && tries++ < 20);
+      if (a === b) return;
+      var omega = Math.acos(Math.max(-1, Math.min(1, d)));
+      attacks.push({ a: a, b: b, omega: omega, so: Math.sin(omega) || 1, alt: 0.02 + omega * 0.10, t0: now, dur: 1500 + Math.random() * 900 });
+    }
+    function arcPoint(at, t) {
+      var A = Math.sin((1 - t) * at.omega) / at.so, B = Math.sin(t * at.omega) / at.so, r = 1 + at.alt * Math.sin(Math.PI * t);
+      proj((at.a[0] * A + at.b[0] * B), (at.a[1] * A + at.b[1] * B), (at.a[2] * A + at.b[2] * B), 1);
+      // proj already applied radius 1; scale elevation about the globe centre
+      sx = cx + (sx - cx) * r; sy = cy + (sy - cy) * r;
+    }
+
+    var last = 0;
+    function frame(now) {
+      var dt = last ? Math.min(now - last, 60) : 16; last = now;
+      if (!reduce) yaw += dt * 0.00005;
+      var dark = root.getAttribute('data-theme') !== 'light';
+      var fg = dark ? '255,255,255' : '12,12,16';
+      ctx.clearRect(0, 0, W, H);
+
+      // sphere body + rim
+      ctx.save();
+      ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2);
+      var fill = ctx.createLinearGradient(0, cy - R, 0, cy - R + 260);
+      fill.addColorStop(0, 'rgba(' + fg + ',' + (dark ? .10 : .07) + ')');
+      fill.addColorStop(1, 'rgba(' + fg + ',0)');
+      ctx.fillStyle = fill; ctx.fill();
+      ctx.shadowColor = 'rgba(' + fg + ',' + (dark ? .35 : .18) + ')'; ctx.shadowBlur = 28;
+      ctx.strokeStyle = 'rgba(' + fg + ',' + (dark ? .22 : .2) + ')'; ctx.lineWidth = 1; ctx.stroke();
+      ctx.restore();
+
+      // land dots
+      var i, p, a, sz2;
+      for (i = 0; i < pts.length; i++) {
+        p = pts[i]; proj(p[0], p[1], p[2], 1);
+        if (sz < 0.02 || sy > H + 4 || sy < -4 || sx < -4 || sx > W + 4) continue;
+        a = (0.22 + 0.55 * Math.min(1, sz * 1.4)) * p[3];
+        ctx.fillStyle = 'rgba(' + fg + ',' + a.toFixed(3) + ')';
+        sz2 = small ? 1.1 : 1.35;
+        ctx.fillRect(sx, sy, sz2, sz2);
+      }
+      // hubs
+      for (i = 0; i < hubs.length; i++) {
+        p = hubs[i]; proj(p[0], p[1], p[2], 1);
+        if (sz < 0.02 || sy > H + 4 || sy < -4 || sx < -4 || sx > W + 4) continue;
+        ctx.fillStyle = 'rgba(' + fg + ',' + (0.35 + 0.5 * Math.min(1, sz)).toFixed(3) + ')';
+        ctx.beginPath(); ctx.arc(sx, sy, small ? 1.4 : 1.8, 0, 6.2832); ctx.fill();
+      }
+
+      // attacks
+      if (!reduce) {
+        if (now >= nextSpawn && attacks.length < (small ? 5 : 8)) {
+          spawn(now); nextSpawn = now + 380 + Math.random() * 620;
+        }
+        for (i = attacks.length - 1; i >= 0; i--) {
+          var at = attacks[i], age = now - at.t0, pr = age / at.dur;
+          if (pr > 1 + 900 / at.dur) { attacks.splice(i, 1); continue; }
+          var head = Math.min(pr, 1), tail = Math.max(0, head - 0.32), n = 26, j, px = null, py = null, vis;
+          if (pr <= 1) {
+            for (j = 0; j <= n; j++) {
+              var t = tail + (head - tail) * (j / n);
+              // visibility: globe-facing test on the surface point
+              var A = Math.sin((1 - t) * at.omega) / at.so, B = Math.sin(t * at.omega) / at.so;
+              proj(at.a[0] * A + at.b[0] * B, at.a[1] * A + at.b[1] * B, at.a[2] * A + at.b[2] * B, 1);
+              vis = sz > 0.02;
+              arcPoint(at, t); var tx = sx, ty = sy;
+              if (vis && px !== null) {
+                var al = Math.pow(j / n, 1.6) * 0.9;
+                ctx.strokeStyle = 'rgba(' + fg + ',' + al.toFixed(3) + ')'; ctx.lineWidth = small ? 1.1 : 1.4; ctx.lineCap = 'round';
+                ctx.beginPath(); ctx.moveTo(px, py); ctx.lineTo(tx, ty); ctx.stroke();
+              }
+              px = vis ? tx : null; py = vis ? ty : null;
+            }
+            if (px !== null) {
+              ctx.save(); ctx.shadowColor = 'rgba(' + fg + ',.9)'; ctx.shadowBlur = 10;
+              ctx.fillStyle = 'rgba(' + fg + ',1)'; ctx.beginPath(); ctx.arc(px, py, small ? 1.8 : 2.2, 0, 6.2832); ctx.fill(); ctx.restore();
+            }
+            // source pulse
+            if (pr < 0.35) {
+              proj(at.a[0], at.a[1], at.a[2], 1);
+              if (sz > 0.02) {
+                var sp = pr / 0.35;
+                ctx.strokeStyle = 'rgba(' + fg + ',' + (0.5 * (1 - sp)).toFixed(3) + ')'; ctx.lineWidth = 1;
+                ctx.beginPath(); ctx.arc(sx, sy, 2 + sp * 9, 0, 6.2832); ctx.stroke();
+              }
+            }
+          } else {
+            // impact rings at the target
+            proj(at.b[0], at.b[1], at.b[2], 1);
+            if (sz > 0.02) {
+              var ip = (age - at.dur) / 900;
+              for (j = 0; j < 2; j++) {
+                var q = ip - j * 0.22; if (q <= 0 || q >= 1) continue;
+                ctx.strokeStyle = 'rgba(255,92,92,' + (0.75 * (1 - q)).toFixed(3) + ')'; ctx.lineWidth = 1.2;
+                ctx.beginPath(); ctx.arc(sx, sy, 2 + q * (small ? 12 : 17), 0, 6.2832); ctx.stroke();
+              }
+              ctx.fillStyle = 'rgba(255,92,92,' + (0.9 * (1 - ip)).toFixed(3) + ')';
+              ctx.beginPath(); ctx.arc(sx, sy, 2, 0, 6.2832); ctx.fill();
+            }
+          }
+        }
+      }
+      if (!reduce) requestAnimationFrame(frame);
+    }
+
+    resize();
+    window.addEventListener('resize', resize);
+    requestAnimationFrame(frame);
+  })();
+</script>
+</body>
+</html>
+
+</body></html>
